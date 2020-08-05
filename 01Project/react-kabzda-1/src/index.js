@@ -3,6 +3,8 @@ import * as serviceWorker from './serviceWorker';
 import state from './Redux/state';
 import rerenderET from './render'
 
+window.state = state;
+
 rerenderET(state);
 
 

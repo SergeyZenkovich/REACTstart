@@ -1,7 +1,7 @@
 import rerenderET from '../render';
 let state = {
-    profile:{
-        postsData : [
+    profile: {
+        postsData: [
             {
                 id: 1,
                 message: 'Hi, how are you?',
@@ -12,11 +12,11 @@ let state = {
                 message: "It's my first post",
                 likesCounter: 20
             }
-          ],
-        newPostText:  'it-kamasutra.com'
+        ],
+        newPostText: 'it-kamasutra.com'
     },
-    dialogs:{
-        dialogsData : [
+    dialogs: {
+        dialogsData: [
             {
                 id: 1,
                 name: 'Dimych'
@@ -33,8 +33,9 @@ let state = {
                 id: 4,
                 name: 'Vlados'
             }
-          ],
-        messagesData : [
+        ],
+        newMessageText: 'Hello Samurai!',
+        messagesData: [
             {
                 id: 1,
                 message: 'Hi'
@@ -51,10 +52,10 @@ let state = {
                 id: 4,
                 message: 'Yo'
             }
-          ],
+        ],
     },
-    sidebar:{
-        friends:[
+    sidebar: {
+        friends: [
             {
                 id: 1,
                 name: 'Dimych'
@@ -81,21 +82,35 @@ let state = {
             }
         ]
     }
-  }
-  let addPostState = ()=>{
-      let index = state.profile.postsData[state.profile.postsData.length-1].id;
-      let newPost = {
-          id : index+1,
-          message: state.profile.newPostText,
-          likesCounter: 0
-      };
+}
+let addPostState = () => {
+    let index = state.profile.postsData[state.profile.postsData.length - 1].id;
+    let newPost = {
+        id: index + 1,
+        message: state.profile.newPostText,
+        likesCounter: 0
+    };
     state.profile.postsData.push(newPost);
     state.profile.newPostText = '';
     rerenderET(state);
-  }
-  let updateTextArea = (text)=>{
-      state.profile.newPostText = text;
-      rerenderET(state);
-  }
-  export{addPostState, updateTextArea};
-  export default state;
+}
+let addMessageState = () => {
+    let index = state.dialogs.messagesData[state.dialogs.messagesData.length - 1].id;
+    let newMessage = {
+        id: index + 1,
+        message: state.dialogs.newMessageText
+    }
+    state.dialogs.messagesData.push(newMessage);
+    state.dialogs.newMessageText = '';
+    rerenderET(state);
+}
+let updateTextArea = (text) => {
+    state.profile.newPostText = text;
+    rerenderET(state);
+}
+let updateMessageArea = (text) => {
+    state.dialogs.newMessageText = text;
+    rerenderET(state);
+}
+export { addPostState, updateTextArea, addMessageState, updateMessageArea };
+export default state;
