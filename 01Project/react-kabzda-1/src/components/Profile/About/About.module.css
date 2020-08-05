@@ -1,0 +1,41 @@
+  .avatar{
+    width: 150px;
+    height: 150px;
+  }
+  .userMainData{
+    width: 30%;
+    background-color: #ffffff;
+    border-radius: 5px;
+  }
+  .description{
+    width: 20%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    border-radius: 5px;
+  }
+  .userName{
+    color: #4c4c4c;
+    font-size: 1.5rem;
+  }
+  .userPlace p, .userJob p{
+    margin: 10px 0 0 0;
+  }
+  .userInfo{
+    width: 100%;
+    margin: 40px 0 20px 0;
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.25rem;
+    background-color: #ffffff;
+    
+  } 
+  .contentDescription{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    
+  }
