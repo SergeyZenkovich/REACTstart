@@ -1,4 +1,6 @@
-import rerenderET from '../render';
+let rerenderET = () => {
+
+}
 let state = {
     profile: {
         postsData: [
@@ -83,7 +85,7 @@ let state = {
         ]
     }
 }
-let addPostState = () => {
+const addPostState = () => {
     let index = state.profile.postsData[state.profile.postsData.length - 1].id;
     let newPost = {
         id: index + 1,
@@ -94,7 +96,7 @@ let addPostState = () => {
     state.profile.newPostText = '';
     rerenderET(state);
 }
-let addMessageState = () => {
+const addMessageState = () => {
     let index = state.dialogs.messagesData[state.dialogs.messagesData.length - 1].id;
     let newMessage = {
         id: index + 1,
@@ -104,13 +106,16 @@ let addMessageState = () => {
     state.dialogs.newMessageText = '';
     rerenderET(state);
 }
-let updateTextArea = (text) => {
+const updateTextArea = (text) => {
     state.profile.newPostText = text;
     rerenderET(state);
 }
-let updateMessageArea = (text) => {
+const updateMessageArea = (text) => {
     state.dialogs.newMessageText = text;
     rerenderET(state);
 }
-export { addPostState, updateTextArea, addMessageState, updateMessageArea };
+let subscribe = (observer) => {
+    rerenderET = observer;
+}
+export { addPostState, updateTextArea, addMessageState, updateMessageArea, subscribe };
 export default state;
