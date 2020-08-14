@@ -6,11 +6,15 @@ const MyPosts = (props) => {
   let postsElements = props.postsData.map(post=><Post key = {post.id} message = {post.message} likesCounter = {post.likesCounter} />);
   let newPostElement = React.createRef();
   let addPost = ()=>{
-    props.addPostState();
+    // props.addPostState();
+    let action  = {type: 'ADD-POST'}
+    props.dispatch(action);
   }
   let change = ()=>{
     let text = newPostElement.current.value;
-    props.updateTextArea(text);
+    // props.updateTextArea(text);
+    let action  = {type:'UPDATE-TEXT-AREA', text:text}
+    props.dispatch(action);
   }
   return (
     <div className={s.Posts}>

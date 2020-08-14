@@ -8,8 +8,9 @@ const Profile = (props) => {
   return (
     <div className = {s.Profile}>
       <About />
-      <MyPosts postsData = {props.profile.postsData} addPostState = {props.addPostState } updateTextArea = {props.updateTextArea} newPostText = {props.newPostText}/>
+      <MyPosts postsData = {props.profile.postsData} dispatch = {props.dispatch}  newPostText = {props.newPostText}/>
     </div>
   )
 }
+// addPostState = {props.addPostState } updateTextArea = {props.updateTextArea}
 export default Profile;

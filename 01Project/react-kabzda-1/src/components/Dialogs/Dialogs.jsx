@@ -15,8 +15,9 @@ const Dialogs = (props) => {
             <div className={s.messages}>
                 {messagesElements}
             </div>
-            <TextArea addMessageState={props.addMessageState} updateMessageArea={props.updateMessageArea} newMessageText={props.newMessageText} />
+            <TextArea dispatch = {props.dispatch} newMessageText={props.newMessageText}/>
         </div>
     )
 }
+//updateMessageArea={props.updateMessageArea} addMessageState={props.addMessageState}
 export default Dialogs;

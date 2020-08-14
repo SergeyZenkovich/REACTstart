@@ -4,12 +4,16 @@ import s from './TextArea.module.css';
 const TextArea = (props) => {
     let newMessageElement = React.createRef();
     let addMessage = () => {
-        props.addMessageState();
+        let action = { type: 'ADD-MESSAGE-STATE' }
+        props.dispatch(action);
+        // props.addMessageState();
 
     }
     let changeMessage = () => {
         let text = newMessageElement.current.value;
-        props.updateMessageArea(text);
+        let action = { type: 'UPDATE-MESSAGE-AREA', text: text }
+        props.dispatch(action);
+        // props.updateMessageArea(text);
     }
 
     return (

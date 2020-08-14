@@ -18,8 +18,8 @@ const App = (props) => {
         <Header />
         <Nav state={props.state.sidebar} />
         <div className="app-wrapper-content">
-          <Route path='/dialogs' render={() => <Dialogs state={props.state.dialogs} newMessageText={props.state.dialogs.newMessageText} addMessageState={props.addMessageState} updateMessageArea={props.updateMessageArea} />} />
-          <Route path='/profile' render={() => <Profile profile={props.state.profile} addPostState={props.addPostState} updateTextArea={props.updateTextArea} newPostText={props.state.profile.newPostText} />} />
+          <Route path='/dialogs' render={() => <Dialogs state={props.state.dialogs} dispatch = {props.dispatch} newMessageText={props.state.dialogs.newMessageText}  />} />
+          <Route path='/profile' render={() => <Profile profile={props.state.profile} dispatch = {props.dispatch}  newPostText={props.state.profile.newPostText} />} />
           <Route path='/settings' component={Settings} />
           <Route path='/news' component={News} />
           <Route path='/music' component={Music} />
@@ -28,5 +28,8 @@ const App = (props) => {
     </BrowserRouter>
   );
 }
+
+//profile addPostState={props.addPostState} updateTextArea={props.updateTextArea}
+// addMessageState={props.addMessageState} updateMessageArea={props.updateMessageArea}
 
 export default App;
