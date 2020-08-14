@@ -1,18 +1,18 @@
 import React from 'react';
 import s from './TextArea.module.css';
+import {addMessageStateCreator, updateMessageAreaCreator} from '../../../Redux/state'
+
 
 const TextArea = (props) => {
     let newMessageElement = React.createRef();
     let addMessage = () => {
-        let action = { type: 'ADD-MESSAGE-STATE' }
-        props.dispatch(action);
+        props.dispatch(addMessageStateCreator());
         // props.addMessageState();
 
     }
     let changeMessage = () => {
         let text = newMessageElement.current.value;
-        let action = { type: 'UPDATE-MESSAGE-AREA', text: text }
-        props.dispatch(action);
+        props.dispatch(updateMessageAreaCreator(text));
         // props.updateMessageArea(text);
     }
 

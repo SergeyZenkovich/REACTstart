@@ -1,7 +1,9 @@
 
 // export { addPostState, updateTextArea, addMessageState, updateMessageArea, subscribe };
-
-
+const ADD_POST = 'ADD-POST';
+const UPDATE_TEXT_AREA = 'UPDATE-TEXT-AREA';
+const ADD_MESSAGE_STATE = 'ADD-MESSAGE-STATE';
+const UPDATE_MESSAGE_AREA = 'UPDATE-MESSAGE-AREA';
 let store = {
     _state: {
         profile: {
@@ -125,7 +127,7 @@ let store = {
         this._callSub(this._state);
     },
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             let index = this._state.profile.postsData[this._state.profile.postsData.length - 1].id;
             let newPost = {
                 id: index + 1,
@@ -136,11 +138,11 @@ let store = {
             this._state.profile.newPostText = '';
             this._callSub(this._state);
         }
-        else if (action.type === 'UPDATE-TEXT-AREA') {
+        else if (action.type === UPDATE_TEXT_AREA) {
             this._state.profile.newPostText = action.text;
             this._callSub(this._state);
         }
-        else if (action.type === 'ADD-MESSAGE-STATE') {
+        else if (action.type === ADD_MESSAGE_STATE) {
             let index = this._state.dialogs.messagesData[this._state.dialogs.messagesData.length - 1].id;
             let newMessage = {
                 id: index + 1,
@@ -150,11 +152,17 @@ let store = {
             this._state.dialogs.newMessageText = '';
             this._callSub(this._state);
         }
-        else if (action.type === 'UPDATE-MESSAGE-AREA') {
+        else if (action.type === UPDATE_MESSAGE_AREA) {
             this._state.dialogs.newMessageText = action.text;
             this._callSub(this._state);
         }
     }
 
 }
+const addPostActionCreator = ()=>({type: ADD_POST});
+const updateNewPostTextcreator = (t)=>({type:UPDATE_TEXT_AREA, text:t});
+   
+const addMessageStateCreator = () =>({ type: ADD_MESSAGE_STATE });
+const updateMessageAreaCreator = (t) =>({ type: UPDATE_MESSAGE_AREA, text: t});
 export default store;
+export{addPostActionCreator,updateNewPostTextcreator,addMessageStateCreator, updateMessageAreaCreator }
