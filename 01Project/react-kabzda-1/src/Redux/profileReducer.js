@@ -1,7 +1,24 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_TEXT_AREA = 'UPDATE-TEXT-AREA';
 
-const profileReducer = (state, action) => {
+let initialState = {
+        postsData: [
+            {
+                id: 1,
+                message: 'Hi, how are you?',
+                likesCounter: 15
+            },
+            {
+                id: 2,
+                message: "It's my first post",
+                likesCounter: 20
+            }
+        ],
+        newPostText: 'it-kamasutra.com'
+    };
+
+
+const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             let index = state.postsData[state.postsData.length - 1].id;

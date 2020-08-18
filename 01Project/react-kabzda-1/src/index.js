@@ -1,6 +1,6 @@
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import store from './Redux/state';
+import store from './Redux/reduxStore';
 
 import React from 'react';
 import ReactDOM, { render } from 'react-dom';
@@ -19,7 +19,10 @@ let rerenderET = (state) => {
 }
 rerenderET(store.getState());
 
-store.subscribe(rerenderET);
+store.subscribe(()=>{
+    let state = store.getState();
+    rerenderET(state);
+});
 
 
 // If you want your app to work offline and load faster, you can change
