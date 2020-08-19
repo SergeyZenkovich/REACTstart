@@ -8,6 +8,7 @@ import Dialogs from './components/Dialogs/Dialogs';
 import Settings from './components/Settings/Settings';
 import News from './components/News/News';
 import Music from './components/Music/Music';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 
 
 
@@ -18,8 +19,8 @@ const App = (props) => {
         <Header />
         <Nav state={props.state.sidebar} />
         <div className="app-wrapper-content">
-          <Route path='/dialogs' render={() => <Dialogs state={props.state.dialogs} dispatch = {props.dispatch} newMessageText={props.state.dialogs.newMessageText}  />} />
-          <Route path='/profile' render={() => <Profile profile={props.state.profile} dispatch = {props.dispatch}  newPostText={props.state.profile.newPostText} />} />
+          <Route path='/dialogs' render={() => <DialogsContainer store = {props.store}/>} />
+          <Route path='/profile' render={() => <Profile store = {props.store}/>} />
           <Route path='/settings' component={Settings} />
           <Route path='/news' component={News} />
           <Route path='/music' component={Music} />
@@ -29,7 +30,8 @@ const App = (props) => {
   );
 }
 
-//profile addPostState={props.addPostState} updateTextArea={props.updateTextArea}
+//profile addPostState={props.addPostState} updateTextArea={props.updateTextArea} profile={props.state.profile} dispatch = {props.dispatch}  newPostText={props.state.profile.newPostText}
+// dialogs state={props.state.dialogs} dispatch = {props.dispatch} newMessageText={props.state.dialogs.newMessageText}
 // addMessageState={props.addMessageState} updateMessageArea={props.updateMessageArea}
 
 export default App;
