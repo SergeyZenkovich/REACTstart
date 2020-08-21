@@ -17,9 +17,9 @@ const App = (props) => {
     <BrowserRouter>
       <div className='app-wrapper'>
         <Header />
-        <Nav state={props.state.sidebar} />
+        <Nav store={props.store} />
         <div className="app-wrapper-content">
-          <Route path='/dialogs' render={() => <DialogsContainer store = {props.store}/>} />
+          <Route path='/dialogs' render={() => <DialogsContainer/>} />
           <Route path='/profile' render={() => <Profile store = {props.store}/>} />
           <Route path='/settings' component={Settings} />
           <Route path='/news' component={News} />

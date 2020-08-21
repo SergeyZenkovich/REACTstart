@@ -6,7 +6,7 @@ import {addPostActionCreator, updateNewPostTextcreator} from '../../../Redux/pro
 
 
 const MyPosts = (props) => {
-  let postsElements = props.postsData.map(post=><Post key = {post.id} message = {post.message} likesCounter = {post.likesCounter} />);
+  let postsElements = props.profile.postsData.map(post=><Post key = {post.id} message = {post.message} likesCounter = {post.likesCounter} />);
   let newPostElement = React.createRef();
   let addPost = ()=>{
     props.addPostState();
@@ -20,7 +20,7 @@ const MyPosts = (props) => {
   return (
     <div className={s.Posts}>
       <div className={s.CreatePostBlock}>
-            <textarea ref = {newPostElement} className = {s.textarea} type="text" onChange = {change}   value = {props.newPostText}/>
+            <textarea ref = {newPostElement} className = {s.textarea} type="text" onChange = {change}   value = {props.profile.newPostText}/>
             <button  className = {s.postButton} onClick = {addPost}> Post</button>
       </div>
       {postsElements}
