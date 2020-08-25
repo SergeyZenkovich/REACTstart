@@ -135,7 +135,6 @@ let store = {
 
 }
 
-
 export default store;
 
 // dispatch old
@@ -170,6 +169,6 @@ export default store;
         // }
 
         //old export before store 
-        
+
 // export { addPostState, updateTextArea, addMessageState, updateMessageArea, subscribe };
 

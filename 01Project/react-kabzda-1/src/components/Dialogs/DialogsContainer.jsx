@@ -1,6 +1,6 @@
 import React from 'react';
 import Dialogs from './Dialogs';
-import {addMessageStateCreator, updateMessageAreaCreator} from '../../Redux/dialogsReducer'
+import { addMessageStateCreator, updateMessageAreaCreator } from '../../Redux/dialogsReducer'
 import { connect } from 'react-redux';
 
 // const DialogsContainer = (props) => {
@@ -8,11 +8,11 @@ import { connect } from 'react-redux';
 
 //     let addMessage = () => {
 //         props.store.dispatch(addMessageStateCreator());
-//         // props.addMessageState();
+// props.addMessageState();
 //     }
 //     let changeMessage = (text) => {
 //         props.store.dispatch(updateMessageAreaCreator(text));
-//         // props.updateMessageArea(text);
+// props.updateMessageArea(text);
 //     }
 
 //     return (
@@ -26,10 +26,10 @@ import { connect } from 'react-redux';
 
 let mapStateToProps = (state) => {
     return {
-        dialogs : state.dialogs
+        dialogs: state.dialogs
     }
 }
-let mapDispatchToProps = (dispatch)=>{
+let mapDispatchToProps = (dispatch) => {
     return {
         addMessage: () => {
             dispatch(addMessageStateCreator());
@@ -42,7 +42,7 @@ let mapDispatchToProps = (dispatch)=>{
     }
 }
 
-const DialogsContainer = connect(mapStateToProps,mapDispatchToProps)(Dialogs) 
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
 
 
 export default DialogsContainer;
