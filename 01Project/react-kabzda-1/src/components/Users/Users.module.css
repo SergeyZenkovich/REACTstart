@@ -3,3 +3,15 @@
     flex-direction: column;
     justify-content: space-between;
 }
+.pagBlock{
+    display: flex;
+    justify-content: space-between;
+}
+.pagSelected{
+    background-color: aquamarine;
+    font-weight: bold;
+    width: 28px;
+}
+.button{
+    width: 30px;
+}
