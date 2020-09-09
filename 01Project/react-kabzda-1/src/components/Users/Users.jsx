@@ -4,15 +4,10 @@ import iconPhoto from '../../assets/images/user_icon.png'
 import s from './Users.module.css';
 import pagination from '../../pagination';
 
-const UsersFunc = (props) => {
-
-    console.log(props);
-    
+const UsersFunc = (props) => {    
     let pages = Math.ceil(props.totalUsersCount / props.pageSize);
     let pagesArray = pagination(props.currentPage, pages);
-    console.log(pages);
     
-
     return (
         <div className={s.usersBlock}>
             <div className={s.pagBlock}>

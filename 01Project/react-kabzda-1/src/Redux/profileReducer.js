@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_TEXT_AREA = 'UPDATE-TEXT-AREA';
+const SET_USER_PROFILE = 'SET-USER-PROFILE'
 
 let initialState = {
     postsData: [
@@ -14,7 +15,8 @@ let initialState = {
             likesCounter: 20
         }
     ],
-    newPostText: 'it-kamasutra.com'
+    newPostText: 'it-kamasutra.com',
+    profile: null
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -40,6 +42,13 @@ const profileReducer = (state = initialState, action) => {
             };
         }
 
+        case SET_USER_PROFILE: {
+            return {
+                ...state,
+                profile: action.profile
+            };
+        }
+
         default:
             return state;
     }
@@ -47,8 +56,9 @@ const profileReducer = (state = initialState, action) => {
 
 const addPostActionCreator = () => ({ type: ADD_POST });
 const updateNewPostTextcreator = (t) => ({ type: UPDATE_TEXT_AREA, text: t });
+const setUserProfile = (profile)=>({ type: SET_USER_PROFILE, profile })
 
-export { addPostActionCreator, updateNewPostTextcreator }
+export { addPostActionCreator, updateNewPostTextcreator, setUserProfile }
 
 
 export default profileReducer;

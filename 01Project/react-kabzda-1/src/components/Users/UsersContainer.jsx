@@ -12,12 +12,12 @@ class Users extends React.Component {
     componentDidMount() {
         this.props.toggleIsFetching(true);
         Axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then((response) => {
-            if (this.props.users.length === 0) {
+            // if (this.props.users.length === 0) {
                 this.props.setUsers(response.data.items);
                 let totalUsersCount = response.data.totalCount > 100 ? 100 : response.data.totalCount;
                 this.props.setTotalCount(totalUsersCount);
                 this.props.toggleIsFetching(false);
-            }
+            // }
         });
     }
 
@@ -33,6 +33,7 @@ class Users extends React.Component {
     render() {
         return (<>
             {this.props.isFetching ? <Preloader /> : null}
+            {console.log(this.props.isFetching)}
             <UsersFunc totalUsersCount={this.props.totalUsersCount} pageSize={this.props.pageSize} currentPage={this.props.currentPage} users={this.props.users} followUser={this.props.followUser} unfollowUser={this.props.unfollowUser} onPageChanged={this.onPageChanged} />
         </>)
     }
