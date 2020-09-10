@@ -4,9 +4,9 @@ import s from './../About.module.css';
 const UserMainData = (props) => {
   return (
     <div className={s.userMainData}>
-      <img className={s.avatar} alt='' src='https://virl.bc.ca/wp-content/uploads/2019/01/AccountIcon2.png' />
+      <img className={s.avatar} alt='' src={props.photo} />
       <div className={s.userName}>
-        <span>{props.firstName}</span> <span>{props.secondName}</span>
+        <span>{props.fullName}</span>
       </div>
     </div>
   )

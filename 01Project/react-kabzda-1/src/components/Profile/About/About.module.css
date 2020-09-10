@@ -3,12 +3,12 @@
     height: 150px;
   }
   .userMainData{
-    width: 30%;
+    width: 35%;
     background-color: #ffffff;
     border-radius: 5px;
   }
   .description{
-    width: 20%;
+    width: 25%;
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
@@ -24,7 +24,7 @@
     margin: 10px 0 0 0;
   }
   .userInfo{
-    width: 100%;
+    width: 80%;
     margin: 40px 0 20px 0;
     display: flex;
     justify-content: space-around;
@@ -32,6 +32,69 @@
     background-color: #ffffff;
     
   } 
+  .socials{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .socials div{
+    width: 26px;
+    height: 30px;
+    margin:0px 5px;
+  }
+  .socials div:hover{
+    cursor: pointer;
+  }
+  .facebook{
+    background-image: url('../../../assets/images/fb.svg');
+  }
+  .facebook:hover{
+    filter: invert(19%) sepia(82%) saturate(531%) hue-rotate(184deg) brightness(98%) contrast(87%);
+  }
+  .github{
+    background-image: url('../../../assets/images/git.svg');
+  }
+  .github:hover{
+    filter: invert(11%) sepia(12%) saturate(861%) hue-rotate(169deg) brightness(97%) contrast(87%);
+  }
+  .instagram{
+    background-image: url('../../../assets/images/inst.svg');
+  }
+  .instagram:hover{
+    filter: invert(35%) sepia(37%) saturate(6467%) hue-rotate(324deg) brightness(92%) contrast(95%);
+  }
+  .twitter{
+    background-image: url('../../../assets/images/tw.svg');
+  }
+  .twitter:hover{
+    filter: invert(62%) sepia(97%) saturate(2047%) hue-rotate(177deg) brightness(102%) contrast(98%);
+  }
+  .youtube{
+    background-image: url('../../../assets/images/yt.svg');
+  }
+  .youtube:hover{
+    filter: invert(9%) sepia(100%) saturate(6532%) hue-rotate(1deg) brightness(104%) contrast(115%);
+  }
+  .socials .vk{
+    background-image: url('../../../assets/images/vk.svg');
+    width: 26px;
+    height: 26px;
+  }
+  .socials .vk:hover{
+    filter: invert(45%) sepia(58%) saturate(407%) hue-rotate(171deg) brightness(91%) contrast(94%);
+  }
+  .socials .website{
+    background-image: url('../../../assets/images/site.svg');
+    width: 26px;
+    height: 26px;
+  }
+  .socials .website:hover{
+    filter: invert(61%) sepia(3%) saturate(19%) hue-rotate(334deg) brightness(92%) contrast(95%);
+  }
+
+  .socials img{
+    width: 30px;
+  }
   .contentDescription{
     width: 100%;
     display: flex;

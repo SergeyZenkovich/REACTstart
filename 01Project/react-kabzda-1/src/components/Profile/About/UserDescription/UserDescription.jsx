@@ -9,8 +9,8 @@ const UserDescription = (props) => {
         <p>{props.place}</p>
       </div>
       <div className={s.userJob}>
-        <p>{props.profession}</p>
-        <p>{props.job}</p>
+        <p>Looking for a job: <span>{props.lookingForAJob ? 'Yes' : 'No'}</span> </p>
+        <p>{props.lookingForAJobDescription}</p>
       </div>
     </div>
   )
