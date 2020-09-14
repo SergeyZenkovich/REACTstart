@@ -7,12 +7,17 @@ import { withRouter } from "react-router";
 
 class ProfileContainerAPI extends React.Component {
 
+    componentWillUnmount() {
+        this.props.setUserProfile(null);
+    }
+    com
     componentDidMount() {
         let userId = this.props.match.params.userId ? this.props.match.params.userId : '2';
         Axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).then((response) => {
             this.props.setUserProfile(response.data);
         });
     }
+
 
     render() {
         return (
@@ -30,10 +35,11 @@ let WithURLDataComponent = withRouter(ProfileContainerAPI);
 let mapStateToProps = (state) => {
     return (
         {
-            profile: state.profile.profile
+            profile: state.profile.profile,
         }
     )
 }
+
 
 const ProfileContainer = connect(mapStateToProps, { setUserProfile })(WithURLDataComponent);
 export default ProfileContainer;

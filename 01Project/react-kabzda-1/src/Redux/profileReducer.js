@@ -1,6 +1,6 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_TEXT_AREA = 'UPDATE-TEXT-AREA';
-const SET_USER_PROFILE = 'SET-USER-PROFILE'
+const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
 let initialState = {
     postsData: [
@@ -16,7 +16,7 @@ let initialState = {
         }
     ],
     newPostText: 'it-kamasutra.com',
-    profile: null
+    profile: null,
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -56,7 +56,7 @@ const profileReducer = (state = initialState, action) => {
 
 const addPostActionCreator = () => ({ type: ADD_POST });
 const updateNewPostTextcreator = (t) => ({ type: UPDATE_TEXT_AREA, text: t });
-const setUserProfile = (profile)=>({ type: SET_USER_PROFILE, profile })
+const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
 
 export { addPostActionCreator, updateNewPostTextcreator, setUserProfile }
 

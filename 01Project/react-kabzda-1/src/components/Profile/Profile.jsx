@@ -6,6 +6,7 @@ import Preloader from '../common/preloader/preloader';
 
 
 const Profile = (props) => {
+
   return (
     <>
       {!props.profile ? <Preloader /> :

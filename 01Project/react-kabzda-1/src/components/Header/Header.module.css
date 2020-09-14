@@ -2,7 +2,13 @@
 .header {
     grid-area: h;
     background-color: aquamarine;
+    display: flex;
+    justify-content: space-between;
   }
 .header img {
     width: 50px;
   }
+.loginBlock a{
+  color: white;
+  text-decoration: none;
+}
