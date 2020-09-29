@@ -4,6 +4,9 @@
     background-color: aquamarine;
     display: flex;
     justify-content: space-between;
+    font-family: 'Roboto';
+    font-size: 14px;
+    font-weight: 700;
   }
 .header img {
     width: 50px;
@@ -11,4 +14,8 @@
 .loginBlock a{
   color: white;
   text-decoration: none;
+  
+}
+.loginBlock p {
+  padding: 5px;
 }

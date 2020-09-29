@@ -11,7 +11,7 @@ class Users extends React.Component {
 
     componentDidMount() {
         this.props.toggleIsFetching(true);
-        Axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then((response) => {
+        Axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {withCredentials:true}).then((response) => {
             // if (this.props.users.length === 0) {
             this.props.setUsers(response.data.items);
             let totalUsersCount = response.data.totalCount > 100 ? 100 : response.data.totalCount;
@@ -24,7 +24,7 @@ class Users extends React.Component {
     onPageChanged = (p) => {
         this.props.toggleIsFetching(true);
         this.props.setCurrentPage(p);
-        Axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`).then((response) => {
+        Axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`, {withCredentials:true}).then((response) => {
             this.props.setUsers(response.data.items);
             this.props.toggleIsFetching(false);
         });
@@ -48,6 +48,13 @@ const mapStateToProps = (state) => {
         isFetching: state.usersPage.isFetching
     }
 }
+
+
+const UsersContainer = connect(mapStateToProps, { followUser, unfollowUser, setUsers, setCurrentPage, setTotalCount, toggleIsFetching })(Users);
+
+export default UsersContainer;
+
+
 //old 
 // const mapDispatchToProps = (dispatch) => {
 //     return {
@@ -71,12 +78,3 @@ const mapStateToProps = (state) => {
 //         }
 //     }
 // }
-
-
-
-
-
-
-const UsersContainer = connect(mapStateToProps, { followUser, unfollowUser, setUsers, setCurrentPage, setTotalCount, toggleIsFetching })(Users);
-
-export default UsersContainer;
