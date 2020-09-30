@@ -14,20 +14,28 @@ const User = (props) => {
             <div className={s.userInfoBlock}>
                 <div className={s.userName}>{props.fullName}</div>
                 <div>{props.status}</div>
-                {props.followed ? <button className={s.unfollowed} onClick={() => {
+                {props.followed ? <button className={s.unfollowed} disabled={props.followingProgress.some(id=>id===props.id)} onClick={() => {
+                
+                    props.toggleIsFollowingProgress(true, props.id);
                     followAPI.unfollowUser(props.id)
                         .then((resultCode) => {
                             if (resultCode === 0) {
                                 props.unfollowUser(props.id);
+                                
                             }
+                            props.toggleIsFollowingProgress(false, props.id);
                         });
                 }
-                }>Unfollow</button> : <button className={s.followed} onClick={() => {
+                }>Unfollow</button> : <button className={s.followed} disabled={props.followingProgress.some(id=>id===props.id)} onClick={() => {
+                    
+                    props.toggleIsFollowingProgress(true,props.id);
                     followAPI.followUser(props.id)
                         .then((resultCode) => {
                             if (resultCode === 0) {
                                 props.followUser(props.id);
+                                
                             }
+                            props.toggleIsFollowingProgress(false,props.id);
                         });
                 }}>Follow</button>}
             </div>
