@@ -13,9 +13,7 @@ const usersAPI = {
     getUsers(currentPage = 1, pageSize = 10) {
         return axiosInstance.get(`users?page=${currentPage}&count=${pageSize}`)
             .then((response => response.data));
-    }
-}
-const followAPI = {
+    },
     followUser(id) {
         return axiosInstance.post(`follow/${id}`, {})
             .then((response => response.data.resultCode));
@@ -23,12 +21,11 @@ const followAPI = {
     unfollowUser(id) {
         return axiosInstance.delete(`follow/${id}`)
             .then((response => response.data.resultCode));
-    }
-}
-const authAPI = {
+    },
     auth() {
         return axiosInstance.get(`auth/me`)
             .then((response => response.data));
     }
 }
-export { usersAPI, followAPI, authAPI };
+
+export { usersAPI };

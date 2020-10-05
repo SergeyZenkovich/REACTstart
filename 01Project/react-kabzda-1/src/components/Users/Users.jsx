@@ -4,10 +4,10 @@ import iconPhoto from '../../assets/images/user_icon.png'
 import s from './Users.module.css';
 import pagination from '../../pagination';
 
-const Users = (props) => {    
+const Users = (props) => {
     let pages = Math.ceil(props.totalUsersCount / props.pageSize);
     let pagesArray = pagination(props.currentPage, pages);
-    
+
     return (
         <div className={s.usersBlock}>
             <div className={s.pagBlock}>
@@ -19,7 +19,13 @@ const Users = (props) => {
                 })
                 }
             </div>
-            {props.users.map(user => <User key={user.id} id={user.id} followed={user.followed} photo={user.photos.small ? user.photos.small : iconPhoto} fullName={user.name} status={user.status} country={user.country} city={user.city} followUser={props.followUser} unfollowUser={props.unfollowUser} toggleIsFollowingProgress = {props.toggleIsFollowingProgress} followingProgress={props.followingProgress} />)}
+            {props.users.map(user => <User key={user.id} id={user.id} followed={user.followed}
+                photo={user.photos.small ? user.photos.small : iconPhoto} fullName={user.name}
+                status={user.status} country={user.country} city={user.city} followUser={props.followUser}
+                unfollowUser={props.unfollowUser}
+                followingProgress={props.followingProgress}
+                unfollowing={props.unfollowing} following={props.following}
+            />)}
         </div >
     )
 }
