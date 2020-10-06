@@ -14,12 +14,9 @@ const usersAPI = {
         return axiosInstance.get(`users?page=${currentPage}&count=${pageSize}`)
             .then((response => response.data));
     },
-<<<<<<< HEAD
     getUserProfile(userId) {
         return axiosInstance.get(`profile/${userId}`);
     },
-=======
->>>>>>> 524fdc3f80d8d8c40dcadf5a7deea32e559cba43
     followUser(id) {
         return axiosInstance.post(`follow/${id}`, {})
             .then((response => response.data.resultCode));
