@@ -20,5 +20,4 @@ const Dialogs = (props) => {
         </div>
     )
 }
-//updateMessageArea={props.updateMessageArea} addMessageState={props.addMessageState}
 export default Dialogs;
