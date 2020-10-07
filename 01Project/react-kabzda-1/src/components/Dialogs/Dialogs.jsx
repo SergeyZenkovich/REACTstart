@@ -3,7 +3,6 @@ import s from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import MessageItem from './MessageItem/MessageItem';
 import TextArea from './TextArea/TextArea';
-import { Redirect } from 'react-router-dom';
 
 const Dialogs = (props) => {
     let dialogsElements = props.dialogs.dialogsData.map(dialogElement => <DialogItem key={dialogElement.id} name={dialogElement.name} id={dialogElement.id} />);
