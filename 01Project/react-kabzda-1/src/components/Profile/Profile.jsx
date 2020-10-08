@@ -11,7 +11,7 @@ const Profile = (props) => {
     <>
       {!props.profile ? <Preloader /> :
         <div className={s.Profile}>
-          <About profile={props.profile} />
+          <About profile={props.profile} status={props.status} updateUserStatus={props.updateUserStatus} />
           <MyPostsContainer store={props.store} />
         </div>}
     </>

@@ -14,9 +14,7 @@ const usersAPI = {
         return axiosInstance.get(`users?page=${currentPage}&count=${pageSize}`)
             .then((response => response.data));
     },
-    getUserProfile(userId) {
-        return axiosInstance.get(`profile/${userId}`);
-    },
+
     followUser(id) {
         return axiosInstance.post(`follow/${id}`, {})
             .then((response => response.data.resultCode));
@@ -25,10 +23,25 @@ const usersAPI = {
         return axiosInstance.delete(`follow/${id}`)
             .then((response => response.data.resultCode));
     },
+
+}
+const profileAPI = {
+    getUserProfile(userId) {
+        return axiosInstance.get(`profile/${userId}`);
+    },
+    getStatus(userId) {
+        return axiosInstance.get(`profile/status/${userId}`);
+    },
+    updateStatus(status) {
+        return axiosInstance.put(`profile/status`, { status: status })
+            .then((response) => response.data.resultCode);
+    }
+}
+const authAPI = {
     auth() {
         return axiosInstance.get(`auth/me`)
             .then((response => response.data));
     }
 }
 
-export { usersAPI };
+export { usersAPI, profileAPI, authAPI };
