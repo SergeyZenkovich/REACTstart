@@ -12,6 +12,7 @@ let mapStateToPropsForRedirect = (state) => {
 
 export const withAuthRedirect = (Component) => {
     class RedirectComponent extends React.Component {
+
         render() {
             if (!this.props.isAuth) {
                 return (
@@ -24,3 +25,4 @@ export const withAuthRedirect = (Component) => {
     let connectedRedirectComponent = connect(mapStateToPropsForRedirect)(RedirectComponent);
     return connectedRedirectComponent;
 }
+

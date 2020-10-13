@@ -40,7 +40,15 @@ const profileAPI = {
 const authAPI = {
     auth() {
         return axiosInstance.get(`auth/me`)
-            .then((response => response.data));
+            .then(response => response.data);
+    },
+    logIn(email, password, rememberMe) {
+        return axiosInstance.post(`auth/login`, { email, password, rememberMe })
+            .then(response => response.data);
+    },
+    logOf() {
+        return axiosInstance.delete(`auth/login`)
+            .then((response => response.data.resultCode));
     }
 }
 

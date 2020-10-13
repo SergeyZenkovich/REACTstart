@@ -18,6 +18,7 @@ class ProfileContainerAPI extends React.Component {
     }
 
     render() {
+        console.log('asdas');
         return (
             <Profile {...this.props} status={this.props.status} updateUserStatus={this.props.updateUserStatus} />
         )

@@ -14,20 +14,21 @@ import Login from './components/Login/Login';
 
 
 const App = (props) => {
-  
+
   return (
     <BrowserRouter>
       <div className='app-wrapper'>
         <HeaderContainer />
         <Nav store={props.store} />
         <div className="app-wrapper-content">
+          <Route path='/login' render={() => <Login />} />
           <Route path='/dialogs' render={() => <DialogsContainer />} />
           <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
           <Route path='/settings' component={Settings} />
           <Route path='/news' component={News} />
           <Route path='/music' component={Music} />
           <Route path='/users' render={() => <UsersContainer />} />
-          <Route path='/login' render={() => <Login />} />
+
         </div>
       </div>
     </BrowserRouter>
