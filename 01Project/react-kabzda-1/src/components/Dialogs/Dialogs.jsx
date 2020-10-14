@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import MessageItem from './MessageItem/MessageItem';
-import TextArea from './TextArea/TextArea';
+import MessageBlock from './MessageBlock/MessageBlock';
 
 const Dialogs = (props) => {
     let dialogsElements = props.dialogs.dialogsData.map(dialogElement => <DialogItem key={dialogElement.id} name={dialogElement.name} id={dialogElement.id} />);
@@ -15,7 +15,7 @@ const Dialogs = (props) => {
             <div className={s.messages}>
                 {messagesElements}
             </div>
-            <TextArea addMessage={props.addMessage} />
+            <MessageBlock addMessage={props.addMessage} />
         </div>
     )
 }

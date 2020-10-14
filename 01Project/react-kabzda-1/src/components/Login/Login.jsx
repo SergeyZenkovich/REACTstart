@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 import { getUserIfLogin, logIn } from '../../Redux/authReducer';
+import { requiredField } from '../../utils/validators/validators';
+import { FormControl } from '../common/FormsControls/FormsControls';
 
 
 class LoginContainer extends React.Component {
@@ -10,7 +12,6 @@ class LoginContainer extends React.Component {
         this.props.getUserIfLogin();
     }
     onSubmit = (formData) => {
-        console.log(formData);
         this.props.logIn(formData.login, formData.password, formData.rememberMe);
     }
     render() {
@@ -33,10 +34,10 @@ const LoginForm = (props) => {
     return (
         <form action="" onSubmit={props.handleSubmit} >
             <div>
-                <Field type="text" placeholder="login" name="login" component={"input"} />
+                <Field type="text" placeholder="login" name="login" component={FormControl} validate={requiredField} fieldtype="input" />
             </div>
             <div>
-                <Field type="password" placeholder="password" name="password" component={"input"} />
+                <Field type="password" placeholder="password" name="password" component={FormControl} validate={requiredField} fieldtype="input" />
             </div>
             <div>
                 <Field type="checkbox" name="rememberMe" component={"input"} />
