@@ -25,9 +25,6 @@ class ProfileContainerAPI extends React.Component {
     }
 }
 
-//postsData = {props.profile.postsData} dispatch = {props.dispatch}  newPostText = {props.newPostText}
-// addPostState = {props.addPostState } updateTextArea = {props.updateTextArea}
-
 
 let mapStateToProps = (state) => {
     return (
