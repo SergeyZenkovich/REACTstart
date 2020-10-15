@@ -46,9 +46,9 @@ const authAPI = {
         return axiosInstance.post(`auth/login`, { email, password, rememberMe })
             .then(response => response.data);
     },
-    logOf() {
+    logOut() {
         return axiosInstance.delete(`auth/login`)
-            .then((response => response.data.resultCode));
+            .then((response => response.data));
     }
 }
 
