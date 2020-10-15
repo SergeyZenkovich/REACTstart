@@ -12,7 +12,7 @@ class ProfileContainerAPI extends React.Component {
         this.props.setUserProfile(null);
     }
     componentDidMount() {
-        let userId = this.props.match.params.userId ? this.props.match.params.userId : '11504';
+        let userId = this.props.match.params.userId ? this.props.match.params.userId : this.props.userId;
         this.props.getUserProfile(userId);
         this.props.getUserStatus(userId);
     }
@@ -30,7 +30,9 @@ let mapStateToProps = (state) => {
     return (
         {
             profile: state.profile.profile,
-            status: state.profile.status
+            status: state.profile.status,
+            userId: state.auth.id,
+            isAuth: state.auth.isAuth
         }
     )
 }

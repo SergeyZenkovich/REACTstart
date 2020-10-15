@@ -5,6 +5,7 @@ import { Field, reduxForm } from 'redux-form';
 import { getUserIfLogin, logIn } from '../../Redux/authReducer';
 import { requiredField } from '../../utils/validators/validators';
 import { FormControl } from '../common/FormsControls/FormsControls';
+import style from '../common/FormsControls/FormsControls.module.css'
 
 
 class LoginContainer extends React.Component {
@@ -42,7 +43,13 @@ const LoginForm = (props) => {
             <div>
                 <Field type="checkbox" name="rememberMe" component={"input"} />
                 remember me
-                </div>
+            </div>
+            <div>
+                {props.error && <div className={style.formSummaryError}>
+                    {props.error}
+                </div>}
+            </div>
+
             <div>
                 <button>Log in</button>
             </div>
