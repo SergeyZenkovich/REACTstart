@@ -30,7 +30,7 @@ const setAuthUserData = (data, isAuth) => ({ type: SET_USER_DATA, data, isAuth }
 export { setAuthUserData }
 
 export const getUserIfLogin = () => (dispatch) => {
-    authAPI.auth()
+   return authAPI.auth()
         .then((data) => {
             if (data.resultCode === 0) {
                 dispatch(setAuthUserData(data.data, true));
@@ -46,7 +46,7 @@ export const logIn = (email, password, rememberMe) => (dispatch) => {
             }
             else {
                 let message = data.messages.length > 0 ? data.messages[0] : 'SIMP'
-                dispatch(stopSubmit('loginForm', { _error: message }));
+                dispatch(stopSubmit('loginF orm', { _error: message }));
             }
         }
         )

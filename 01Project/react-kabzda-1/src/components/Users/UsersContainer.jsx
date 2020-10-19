@@ -47,29 +47,3 @@ export default compose(
     connect(mapStateToProps, { followUser, unfollowUser, setCurrentPage, getUsers, unfollowing, following }),
     withAuthRedirect
 )(UsersContainer);
-
-
-
-//old 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         followUser: (userID) => {
-//             dispatch(followActionCreator(userID));
-//         },
-//         unfollowUser: (userID) => {
-//             dispatch(unFollowActionCreator(userID));
-//         },
-//         setUsers: (users) => {
-//             dispatch(setUsersActionCreator(users));
-//         },
-//         setCurrentPage: (number) => {
-//             dispatch(setCurrentPageActionCreator(number));
-//         },
-//         setTotalCount: (number) => {
-//             dispatch(setTotalCountActionCreator(number));
-//         },
-//         toggleIsFetching: (isFetching) => {
-//             dispatch(toggleIsFetchingActionCreator(isFetching));
-//         }
-//     }
-// }

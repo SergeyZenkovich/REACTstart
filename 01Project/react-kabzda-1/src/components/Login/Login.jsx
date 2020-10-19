@@ -9,9 +9,6 @@ import style from '../common/FormsControls/FormsControls.module.css'
 
 
 class LoginContainer extends React.Component {
-    componentDidMount() {
-        this.props.getUserIfLogin();
-    }
     onSubmit = (formData) => {
         this.props.logIn(formData.login, formData.password, formData.rememberMe);
     }
@@ -67,4 +64,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, { logIn, getUserIfLogin })(LoginContainer);
+export default connect(mapStateToProps, { logIn})(LoginContainer);
