@@ -1,8 +1,8 @@
 import React from 'react';
 import s from './Settings.module.css';
-const Settings = (props)=>{
-    return(
-        <div>
+const Settings = (props) => {
+    return (
+        <div className={s.settingsBlock}>
             Settings
         </div>
     )

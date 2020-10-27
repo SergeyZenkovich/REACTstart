@@ -5,8 +5,9 @@ import { getUserProfile, getUserStatus, setUserProfile, updateUserStatus } from 
 import { withRouter } from "react-router";
 import { withAuthRedirect } from '../../hocs/withAuthRedirect';
 import { compose } from 'redux';
+import { getIsUserAuth, getProfile, getStatus, getUserId } from '../../Redux/profileSelectors';
 
-class ProfileContainerAPI extends React.Component {
+class ProfileContainerAPI extends React.PureComponent {
 
     componentWillUnmount() {
         this.props.setUserProfile(null);
@@ -18,7 +19,6 @@ class ProfileContainerAPI extends React.Component {
     }
 
     render() {
-        console.log('asdas');
         return (
             <Profile {...this.props} status={this.props.status} updateUserStatus={this.props.updateUserStatus} />
         )
@@ -26,13 +26,14 @@ class ProfileContainerAPI extends React.Component {
 }
 
 
+
 let mapStateToProps = (state) => {
     return (
         {
-            profile: state.profile.profile,
-            status: state.profile.status,
-            userId: state.auth.id,
-            isAuth: state.auth.isAuth
+            profile: getProfile(state),
+            status: getStatus(state),
+            userId: getUserId(state),
+            isAuth: getIsUserAuth(state)
         }
     )
 }

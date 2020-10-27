@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
-import { getUserIfLogin, logIn } from '../../Redux/authReducer';
+import { logIn } from '../../Redux/authReducer';
 import { requiredField } from '../../utils/validators/validators';
 import { FormControl } from '../common/FormsControls/FormsControls';
 import style from '../common/FormsControls/FormsControls.module.css'
@@ -64,4 +64,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, { logIn})(LoginContainer);
+export default connect(mapStateToProps, { logIn })(LoginContainer);

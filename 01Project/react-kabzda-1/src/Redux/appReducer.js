@@ -1,11 +1,9 @@
-import { authAPI } from "../api/api";
-import { stopSubmit } from "redux-form";
 import { getUserIfLogin } from "./authReducer";
 
 const INITIALIZED_SUCCESS = 'INITIALIZED-SUCCESS';
 
 let initialState = {
-    initialized:  false,
+    initialized: false,
 };
 
 const appReducer = (state = initialState, action) => {
@@ -14,7 +12,7 @@ const appReducer = (state = initialState, action) => {
             return {
 
                 ...state,
-                initialized:true,
+                initialized: true,
             };
         }
 
@@ -28,10 +26,10 @@ export { initializedSuccess }
 
 export const initializeApp = () => (dispatch) => {
     let promise = dispatch(getUserIfLogin());
-    Promise.all([promise]).then(()=>{
+    Promise.all([promise]).then(() => {
         dispatch(initializedSuccess());
     })
-    
+
 }
 
 
