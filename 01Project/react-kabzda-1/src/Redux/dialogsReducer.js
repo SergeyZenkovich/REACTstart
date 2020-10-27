@@ -1,4 +1,4 @@
-const ADD_MESSAGE_STATE = 'ADD-MESSAGE-STATE';
+const ADD_MESSAGE_STATE = 'samuraiNetwork/dialogsReducer/ADD-MESSAGE-STATE';
 
 let initialState = {
     dialogsData: [

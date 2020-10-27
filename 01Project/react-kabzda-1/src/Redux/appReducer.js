@@ -1,6 +1,6 @@
 import { getUserIfLogin } from "./authReducer";
 
-const INITIALIZED_SUCCESS = 'INITIALIZED-SUCCESS';
+const INITIALIZED_SUCCESS = 'samuraiNetwork/appReducer/INITIALIZED-SUCCESS';
 
 let initialState = {
     initialized: false,
@@ -24,12 +24,10 @@ const appReducer = (state = initialState, action) => {
 const initializedSuccess = () => ({ type: INITIALIZED_SUCCESS });
 export { initializedSuccess }
 
-export const initializeApp = () => (dispatch) => {
-    let promise = dispatch(getUserIfLogin());
-    Promise.all([promise]).then(() => {
-        dispatch(initializedSuccess());
-    })
-
+export const initializeApp = () => async (dispatch) => {
+    const promise = await dispatch(getUserIfLogin());
+    await Promise.all([promise])
+    dispatch(initializedSuccess());
 }
 
 

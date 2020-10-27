@@ -1,7 +1,7 @@
 import { authAPI } from "../api/api";
 import { stopSubmit } from "redux-form";
 
-const SET_USER_DATA = 'SET-USER-DATA';
+const SET_USER_DATA = 'samuraiNetwork/authReducer/SET-USER-DATA';
 
 let initialState = {
     id: null,
@@ -29,36 +29,28 @@ const authReducer = (state = initialState, action) => {
 const setAuthUserData = (data, isAuth) => ({ type: SET_USER_DATA, data, isAuth });
 export { setAuthUserData }
 
-export const getUserIfLogin = () => (dispatch) => {
-   return authAPI.auth()
-        .then((data) => {
-            if (data.resultCode === 0) {
-                dispatch(setAuthUserData(data.data, true));
-            }
-        });
+export const getUserIfLogin = () => async (dispatch) => {
+    let data = await authAPI.auth()
+    if (data.resultCode === 0) {
+        dispatch(setAuthUserData(data.data, true));
+    }
 }
 
-export const logIn = (email, password, rememberMe) => (dispatch) => {
-    authAPI.logIn(email, password, rememberMe)
-        .then((data) => {
-            if (data.resultCode === 0) {
-                dispatch(getUserIfLogin());
-            }
-            else {
-                let message = data.messages.length > 0 ? data.messages[0] : 'SIMP'
-                dispatch(stopSubmit('loginF orm', { _error: message }));
-            }
-        }
-        )
+export const logIn = (email, password, rememberMe) => async (dispatch) => {
+    let data = await authAPI.logIn(email, password, rememberMe)
+    if (data.resultCode === 0) {
+        dispatch(getUserIfLogin());
+    }
+    else {
+        let message = data.messages.length > 0 ? data.messages[0] : 'SIMP'
+        dispatch(stopSubmit('loginForm', { _error: message }));
+    }
 }
-export const logOut = () => (dispatch) => {
-    authAPI.logOut()
-        .then((data) => {
-            if (data.resultCode === 0) {
-                dispatch(setAuthUserData(null, false));
-            }
-        }
-        )
+export const logOut = () => async (dispatch) => {
+    let data = await authAPI.logOut()
+    if (data.resultCode === 0) {
+        dispatch(setAuthUserData(null, false));
+    }
 }
 
 export default authReducer
