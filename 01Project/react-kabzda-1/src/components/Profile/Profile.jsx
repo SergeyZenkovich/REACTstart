@@ -6,7 +6,6 @@ import Preloader from '../common/preloader/preloader';
 
 
 const Profile = (props) => {
-
   return (
     <>
       {!props.profile ? <Preloader /> :
@@ -18,6 +17,4 @@ const Profile = (props) => {
   )
 }
 
-//postsData = {props.profile.postsData} dispatch = {props.dispatch}  newPostText = {props.newPostText}
-// addPostState = {props.addPostState } updateTextArea = {props.updateTextArea}
 export default Profile;
