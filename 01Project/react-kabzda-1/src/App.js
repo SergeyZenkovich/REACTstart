@@ -23,7 +23,7 @@ class App extends React.Component {
   }
   render() {
     if (!this.props.initialized) {
-      return (Preloader);
+      return (<Preloader/>);
     }
     return (
       <div className='app-wrapper'>
@@ -33,11 +33,10 @@ class App extends React.Component {
           <Route path='/login' render={() => <Login />} />
           <Route path='/dialogs' render={() => <DialogsContainer />} />
           <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
-          <Route path='/settings' component={Settings} />
-          <Route path='/news' component={News} />
-          <Route path='/music' component={Music} />
+          <Route path='/settings' render={() => <Settings />} />
+          <Route path='/news' render={() => <News />} />
+          <Route path='/music' render={() => <Music />} />
           <Route path='/users' render={() => <UsersContainer />} />
-
         </div>
       </div>
     );
@@ -45,15 +44,13 @@ class App extends React.Component {
 
 }
 
-//profile addPostState={props.addPostState} updateTextArea={props.updateTextArea} profile={props.state.profile} dispatch = {props.dispatch}  newPostText={props.state.profile.newPostText}
-// dialogs state={props.state.dialogs} dispatch = {props.dispatch} newMessageText={props.state.dialogs.newMessageText}
-// addMessageState={props.addMessageState} updateMessageArea={props.updateMessageArea}
 const mapStateToProps = (state) => {
   return ({
     initialized: state.app.initialized
   })
 }
 
+
 export default compose(
   withRouter,
-  connect(mapStateToProps, { initializeApp }))(App);
+  connect(mapStateToProps, { initializeApp }))(App);;

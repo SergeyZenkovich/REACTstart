@@ -5,13 +5,13 @@ import MyPostsContainer from './MyPosts/MyPostsContainer';
 import Preloader from '../common/preloader/preloader';
 
 
-const Profile = (props) => {
+const Profile = ({profile, status, updateUserStatus }) => {
   return (
     <>
-      {!props.profile ? <Preloader /> :
+      {!profile ? <Preloader /> :
         <div className={s.Profile}>
-          <About profile={props.profile} status={props.status} updateUserStatus={props.updateUserStatus} />
-          <MyPostsContainer store={props.store} />
+          <About profile={profile} status={status} updateUserStatus={updateUserStatus} />
+          <MyPostsContainer />
         </div>}
     </>
   )
