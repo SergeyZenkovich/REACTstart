@@ -37,4 +37,5 @@ test(`DELETING: length of posts shouldn't decremented if id is incorrect`, () =>
     let action = deletePost(2000)
     let newState = profileReducer(state, action);
     expect(newState.postsData.length).toBe(2);
+
 });
