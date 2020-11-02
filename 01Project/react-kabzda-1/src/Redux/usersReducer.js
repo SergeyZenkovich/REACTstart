@@ -85,13 +85,13 @@ export const requestUsers = (page, pageSize) => async (dispatch) => {
     dispatch(toggleIsFetching(true));
     const data = await usersAPI.getUsers(page, pageSize);
     dispatch(setUsers(data.items));
-    const totalUsersCount = data.totalCount > 100 ? 100 : data.totalCount;
+    const totalUsersCount = data.totalCount;
     dispatch(setTotalCount(totalUsersCount));
     dispatch(toggleIsFetching(false));
 }
 
 const followUnfollowFlow = async (dispatch, id, apiMethod, actionCreator) => {
-    
+
     dispatch(toggleIsFollowingProgress(true, id));
     const resultCode = await apiMethod(id);
     if (resultCode === 0) {
