@@ -9,7 +9,7 @@ const Users = ({totalUsersCount, pageSize, currentPage, onPageChanged, users, un
     return (
         
         <div className={s.usersBlock}>
-            <PaginatorNew totalItemsCount = {totalUsersCount} pageSize={pageSize} currentPage={currentPage} onPageChanged={onPageChanged} portionSize = {10} /> 
+            <PaginatorNew totalItemsCount = {totalUsersCount} pageSize={pageSize} currentPage={currentPage} onPageChanged={onPageChanged}/> 
             {users.map(user => <User key={user.id} id={user.id} followed={user.followed}
                 photo={user.photos.small ? user.photos.small : iconPhoto} fullName={user.name}
                 status={user.status} country={user.country} city={user.city} followUser={followUser}
