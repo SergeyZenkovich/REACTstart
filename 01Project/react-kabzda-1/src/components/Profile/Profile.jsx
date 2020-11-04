@@ -5,12 +5,12 @@ import MyPostsContainer from './MyPosts/MyPostsContainer';
 import Preloader from '../common/preloader/preloader';
 
 
-const Profile = ({profile, status, updateUserStatus }) => {
+const Profile = ({profile, status, updateUserStatus, isOwner }) => {
   return (
     <>
       {!profile ? <Preloader /> :
         <div className={s.Profile}>
-          <About profile={profile} status={status} updateUserStatus={updateUserStatus} />
+          <About profile={profile} status={status} updateUserStatus={updateUserStatus} isOwner = {isOwner}/>
           <MyPostsContainer />
         </div>}
     </>

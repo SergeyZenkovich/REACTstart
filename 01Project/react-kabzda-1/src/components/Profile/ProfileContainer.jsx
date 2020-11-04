@@ -12,15 +12,24 @@ class ProfileContainerAPI extends React.PureComponent {
     componentWillUnmount() {
         this.props.setUserProfile(null);
     }
-    componentDidMount() {
+    refreshProfileInfo(){
         let userId = this.props.match.params.userId ? this.props.match.params.userId : this.props.userId;
         this.props.getUserProfile(userId);
         this.props.getUserStatus(userId);
     }
+    componentDidMount() {
+        this.refreshProfileInfo();
+    }
+    componentDidUpdate(prevProps, prevState){
+        if(prevProps.match.params.userId!== this.props.match.params.userId ){
+            this.refreshProfileInfo();
+        }
+        
+    }
 
     render() {
         return (
-            <Profile {...this.props} status={this.props.status} updateUserStatus={this.props.updateUserStatus} />
+            <Profile {...this.props} status={this.props.status} updateUserStatus={this.props.updateUserStatus} isOwner = {!!this.props.match.params.userId} />
         )
     }
 }
