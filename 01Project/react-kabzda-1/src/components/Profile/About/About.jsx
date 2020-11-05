@@ -7,11 +7,11 @@ import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 
 
 const About = (props) => {
-
+  
   return (
     <div className={s.contentDescription}>
       <ProfileStatusWithHooks status={props.status} updateUserStatus={props.updateUserStatus} />
-      <UserMainData fullName={props.profile.fullName} photo={props.profile.photos.large ? props.profile.photos.large : 'https://virl.bc.ca/wp-content/uploads/2019/01/AccountIcon2.png'} />
+      <UserMainData fullName={props.profile.fullName} photo={props.profile.photos.large ? props.profile.photos.large : 'https://virl.bc.ca/wp-content/uploads/2019/01/AccountIcon2.png'} isOwner = {props.isOwner} savePhoto ={props.savePhoto}/>
       <UserDescription place='Minsk' lookingForAJob={props.profile.lookingForAJob} lookingForAJobDescription={props.profile.lookingForAJobDescription} />
       <UserInfo
         contactsCounter='584' postsCounter='78'

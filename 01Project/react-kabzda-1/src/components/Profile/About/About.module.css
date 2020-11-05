@@ -100,5 +100,13 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    
+  
+  }
+  .loadButton{
+    display: none;
+  }
+  .loadLabel{
+    padding: 2px;
+    border: 1px solid #0075c8;
+    border-radius: 2px;
   }

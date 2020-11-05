@@ -1,5 +1,6 @@
 import Axios from 'axios';
 
+
 const axiosInstance = Axios.create({
     withCredentials: true,
     headers: {
@@ -35,6 +36,13 @@ const profileAPI = {
     updateStatus(status) {
         return axiosInstance.put(`profile/status`, { status: status })
             .then((response) => response.data.resultCode);
+    },
+    savePhotoOnServer(file) {
+        const formData = new FormData();
+        formData.append('image', file);
+
+        return axiosInstance.put(`profile/photo`, formData)
+            .then((response) => response.data);
     }
 }
 const authAPI = {
