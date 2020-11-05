@@ -7,19 +7,19 @@ import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 
 
 const About = (props) => {
-  
+
   return (
     <div className={s.contentDescription}>
-      <ProfileStatusWithHooks status={props.status} updateUserStatus={props.updateUserStatus} />
-      <UserMainData fullName={props.profile.fullName} photo={props.profile.photos.large ? props.profile.photos.large : 'https://virl.bc.ca/wp-content/uploads/2019/01/AccountIcon2.png'} isOwner = {props.isOwner} savePhoto ={props.savePhoto}/>
-      <UserDescription place='Minsk' lookingForAJob={props.profile.lookingForAJob} lookingForAJobDescription={props.profile.lookingForAJobDescription} />
-      <UserInfo
-        contactsCounter='584' postsCounter='78'
-        facebook={props.profile.contacts.facebook} github={props.profile.contacts.github}
-        instagram={props.profile.contacts.instagram} twitter={props.profile.contacts.twitter}
-        youtube={props.profile.contacts.youtube} vk={props.profile.contacts.vk}
-        website={props.profile.contacts.website} />
+      <ProfileStatusWithHooks status={props.status} updateUserStatus={props.updateUserStatus} isOwner={props.isOwner} />
+      <UserMainData fullName={props.profile.fullName} photo={props.profile.photos.large ? props.profile.photos.large : 'https://virl.bc.ca/wp-content/uploads/2019/01/AccountIcon2.png'} isOwner={props.isOwner} savePhoto={props.savePhoto} />
+      <UserDescription lookingForAJob={props.profile.lookingForAJob} lookingForAJobDescription={props.profile.lookingForAJobDescription} aboutMe={props.profile.aboutMe} />
+      <UserInfo contactsCounter='584' postsCounter='78' contacts={props.profile.contacts}
+      />
     </div>
   )
 }
+// facebook={props.profile.contacts.facebook} github={props.profile.contacts.github}
+//         instagram={props.profile.contacts.instagram} twitter={props.profile.contacts.twitter}
+//         youtube={props.profile.contacts.youtube} vk={props.profile.contacts.vk}
+//         website={props.profile.contacts.website} 
 export default About;

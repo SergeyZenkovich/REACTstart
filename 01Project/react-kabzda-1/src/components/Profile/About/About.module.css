@@ -40,7 +40,8 @@
   .socials div{
     width: 26px;
     height: 30px;
-    margin:0px 5px;
+    margin:0px 10px;
+    font-size: 9px;
   }
   .socials div:hover{
     cursor: pointer;

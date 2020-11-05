@@ -5,12 +5,13 @@ import s from './../About.module.css';
 const UserDescription = (props) => {
   return (
     <div className={s.description}>
-      <div className={s.userPlace}>
-        <p>{props.place}</p>
+      <div className={s.aboutMe}>
+        <b>About me: </b>
+        <p>{props.aboutMe}</p>
       </div>
       <div className={s.userJob}>
-        <p>Looking for a job: <span>{props.lookingForAJob ? 'Yes' : 'No'}</span> </p>
-        <p>{props.lookingForAJobDescription}</p>
+        <p> <b>Looking for a job: </b>  <span> {props.lookingForAJob ? 'Yes' : 'No'}</span> </p>
+        {props.lookingForAJob && <p><b>Description: </b>{props.lookingForAJobDescription}</p>}
       </div>
     </div>
   )
