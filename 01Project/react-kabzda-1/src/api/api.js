@@ -43,6 +43,10 @@ const profileAPI = {
 
         return axiosInstance.put(`profile/photo`, formData)
             .then((response) => response.data);
+    },
+    saveProfileOnServer(profile) {
+        return axiosInstance.put(`profile`, profile)
+            .then((response) => response.data);
     }
 }
 const authAPI = {

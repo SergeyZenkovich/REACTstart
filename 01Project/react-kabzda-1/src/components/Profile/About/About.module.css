@@ -8,13 +8,14 @@
     border-radius: 5px;
   }
   .description{
-    width: 25%;
-    background-color: #ffffff;
+    width: 45%;
+    margin: 10px 0;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: flex-start;
     border-radius: 5px;
+    background-color: #ffffff;
   }
   .userName{
     color: #4c4c4c;
@@ -24,8 +25,8 @@
     margin: 10px 0 0 0;
   }
   .userInfo{
-    width: 80%;
-    margin: 40px 0 20px 0;
+    width: 20%;
+    margin: 10px 0;
     display: flex;
     justify-content: space-around;
     font-size: 1.25rem;
@@ -34,14 +35,25 @@
   } 
   .socials{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: baseline;
   }
-  .socials div{
+  .contactBlock{
+    display: flex;
+    flex-direction: column;
     width: 26px;
-    height: 30px;
-    margin:0px 10px;
+    
+    margin:0px 15px;
     font-size: 9px;
+  }
+  .contactBlock a {
+    width: 26px;
+    height: 26px;
+  }
+  .contactBlock div{
+    width: 22px;
+    height: 26px;
   }
   .socials div:hover{
     cursor: pointer;
@@ -100,8 +112,12 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
-    flex-wrap: wrap;
-  
+    flex-direction: column;
+  }
+  .descriptionBlock{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
   .loadButton{
     display: none;
@@ -110,4 +126,14 @@
     padding: 2px;
     border: 1px solid #0075c8;
     border-radius: 2px;
+  }
+  .editStartButton{
+    width: 50px;
+    height: 30px;
+    background-color: royalblue;
+  }
+  .editEndButton{
+    width: 50px;
+    height: 30px;
+    background-color:forestgreen;
   }

@@ -7,7 +7,7 @@ const UserDescription = (props) => {
     <div className={s.description}>
       <div className={s.aboutMe}>
         <b>About me: </b>
-        <p>{props.aboutMe}</p>
+        <span>{props.aboutMe}</span>
       </div>
       <div className={s.userJob}>
         <p> <b>Looking for a job: </b>  <span> {props.lookingForAJob ? 'Yes' : 'No'}</span> </p>
