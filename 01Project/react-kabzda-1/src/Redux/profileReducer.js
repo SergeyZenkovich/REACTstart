@@ -1,4 +1,5 @@
 import { profileAPI } from "../api/api";
+import { stopSubmit } from "redux-form";
 
 const ADD_POST = 'samuraiNetwork/profileReducer/ADD-POST';
 const SET_USER_PROFILE = 'samuraiNetwork/profileReducer/SET-USER-PROFILE';
@@ -73,7 +74,6 @@ const deletePost = (postId) => ({ type: DELETE_POST, postId });
 const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
 const setStatus = (status) => ({ type: SET_STATUS, status });
 const savePhotoSuccess = (photo) => ({ type: SET_PHOTO, photo });
-const saveProfileSuccess = (profile) => ({ type: SET_USER_PROFILE, profile });
 
 export {
     addPost, setUserProfile, deletePost
@@ -100,10 +100,16 @@ export const savePhoto = (file) => async (dispatch) => {
 
     }
 }
-export const saveProfile = (newProfileObject) => async (dispatch) => {
-    const data = await profileAPI.saveProfileOnServer(newProfileObject);
-    if (data.resultCode === 0) {
-        dispatch(saveProfileSuccess(data));
+export const saveProfile = (newProfileObject) => async (dispatch, getState) => {
+    const userId = getState().auth.id;
+    const response = await profileAPI.saveProfileOnServer(newProfileObject);
+    if (response.data.resultCode === 0) {
+        dispatch(getUserProfile(userId));
+    }
+    else {
+        let message = response.data.messages.length > 0 ? response.data.messages[0] : 'SIMP'
+        dispatch(stopSubmit('editProfile', { _error: message }));
+        return Promise.reject(message);
     }
 }
 

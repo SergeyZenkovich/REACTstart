@@ -18,8 +18,8 @@ const About = (props) => {
     setEditMode(false);
   }
   const onSubmit = (formData) => {
-    props.saveProfile(formData);
-    deactivateEditMode();
+    props.saveProfile(formData).then(()=>{deactivateEditMode()});
+    
   }
 
   return (
@@ -30,7 +30,7 @@ const About = (props) => {
       </div>
       {editMode ?
         <div>
-          <DescriptionForm onSubmit={onSubmit} />
+          <DescriptionForm onSubmit={onSubmit} initialValues = {props.profile} contacts={props.profile.contacts} />
         </div> :
         <div className={s.descriptionBlock}>
           <UserDescription lookingForAJob={props.profile.lookingForAJob} lookingForAJobDescription={props.profile.lookingForAJobDescription} aboutMe={props.profile.aboutMe} />

@@ -40,13 +40,11 @@ const profileAPI = {
     savePhotoOnServer(file) {
         const formData = new FormData();
         formData.append('image', file);
-
         return axiosInstance.put(`profile/photo`, formData)
             .then((response) => response.data);
     },
     saveProfileOnServer(profile) {
-        return axiosInstance.put(`profile`, profile)
-            .then((response) => response.data);
+        return axiosInstance.put(`profile`, profile);
     }
 }
 const authAPI = {

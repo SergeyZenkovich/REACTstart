@@ -137,3 +137,7 @@
     height: 30px;
     background-color:forestgreen;
   }
+  .socialsEdit{
+    display: flex;
+    flex-direction: column;
+  }
