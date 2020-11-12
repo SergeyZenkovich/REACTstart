@@ -1,11 +1,11 @@
 import React from 'react';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import { getUserProfile, getUserStatus, savePhoto, setUserProfile, updateUserStatus, saveProfile } from '../../Redux/profileReducer';
+import { getUserProfile, getUserStatus, savePhoto, setUserProfile, updateUserStatus, saveProfile, startEditProfile } from '../../Redux/profileReducer';
 import { withRouter } from "react-router";
 import { withAuthRedirect } from '../../hocs/withAuthRedirect';
 import { compose } from 'redux';
-import { getIsUserAuth, getProfile, getStatus, getUserId } from '../../Redux/profileSelectors';
+import { getIsUserAuth, getProfile, getStatus, getUserId, getIsEditMode } from '../../Redux/profileSelectors';
 
 
 class ProfileContainerAPI extends React.PureComponent {
@@ -30,7 +30,7 @@ class ProfileContainerAPI extends React.PureComponent {
 
     render() {
         return (
-            <Profile {...this.props} status={this.props.status} updateUserStatus={this.props.updateUserStatus} isOwner={!!!this.props.match.params.userId} savePhoto={this.props.savePhoto} />
+            <Profile {...this.props} status={this.props.status} updateUserStatus={this.props.updateUserStatus} isOwner={!!!this.props.match.params.userId} savePhoto={this.props.savePhoto} startEditProfile={this.props.startEditProfile} />
 
         )
     }
@@ -44,14 +44,15 @@ let mapStateToProps = (state) => {
             profile: getProfile(state),
             status: getStatus(state),
             userId: getUserId(state),
-            isAuth: getIsUserAuth(state)
+            isAuth: getIsUserAuth(state),
+            isEditMode: getIsEditMode(state)
         }
     )
 }
 
 
 export default compose(
-    connect(mapStateToProps, { setUserProfile, getUserProfile, getUserStatus, updateUserStatus, savePhoto, saveProfile }),
+    connect(mapStateToProps, { setUserProfile, getUserProfile, getUserStatus, updateUserStatus, savePhoto, saveProfile, startEditProfile }),
     withRouter,
     withAuthRedirect
 )(ProfileContainerAPI);

@@ -6,6 +6,8 @@ const SET_USER_PROFILE = 'samuraiNetwork/profileReducer/SET-USER-PROFILE';
 const SET_STATUS = 'samuraiNetwork/profileReducer/SET-STATUS';
 const DELETE_POST = 'samuraiNetwork/profileReducer/DELETE-POST';
 const SET_PHOTO = 'samuraiNetwork/profileReducer/SET-PHOTO';
+const START_EDIT_MODE = 'samuraiNetwork/profileReducer/START_EDIT_MODE';
+const END_EDIT_MODE = 'samuraiNetwork/profileReducer/END_EDIT_MODE';
 
 let initialState = {
     postsData: [
@@ -21,7 +23,8 @@ let initialState = {
         }
     ],
     profile: null,
-    status: ''
+    status: '',
+    editMode: false
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -57,6 +60,18 @@ const profileReducer = (state = initialState, action) => {
                 profile: { ...state.profile, photos: action.photo }
             }
         }
+        case START_EDIT_MODE: {
+            return {
+                ...state,
+                editMode: true
+            }
+        }
+        case END_EDIT_MODE: {
+            return {
+                ...state,
+                editMode: false
+            }
+        }
         case DELETE_POST: {
             return {
                 ...state,
@@ -74,9 +89,11 @@ const deletePost = (postId) => ({ type: DELETE_POST, postId });
 const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
 const setStatus = (status) => ({ type: SET_STATUS, status });
 const savePhotoSuccess = (photo) => ({ type: SET_PHOTO, photo });
+const startEditProfile = () => ({ type: START_EDIT_MODE });
+const completeEditProfile = () => ({ type: END_EDIT_MODE });
 
 export {
-    addPost, setUserProfile, deletePost
+    addPost, setUserProfile, deletePost, startEditProfile
 }
 
 export const getUserProfile = (id) => async (dispatch) => {
@@ -104,13 +121,20 @@ export const saveProfile = (newProfileObject) => async (dispatch, getState) => {
     const userId = getState().auth.id;
     const response = await profileAPI.saveProfileOnServer(newProfileObject);
     if (response.data.resultCode === 0) {
+        dispatch(completeEditProfile());
         dispatch(getUserProfile(userId));
+
     }
     else {
-        let message = response.data.messages.length > 0 ? response.data.messages[0] : 'SIMP'
-        dispatch(stopSubmit('editProfile', { _error: message }));
+        const message = response.data.messages.length > 0 ? response.data.messages[0] : 'SIMP';
+        const parsed = urlErrorParser(message);
+        dispatch(stopSubmit('editProfile', { 'contacts': { [parsed]: messageParser(message) } }));
         return Promise.reject(message);
     }
 }
+const urlErrorParser = (message) => {
+    return message.includes('Contacts->') ? message.slice(message.indexOf('->') + 2, message.indexOf(')')).toLowerCase() : message;
+}
+const messageParser = (message) => message.split('(')[0];
 
 export default profileReducer;

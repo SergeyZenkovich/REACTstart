@@ -2,14 +2,14 @@ import React from 'react';
 import User from './User/User';
 import iconPhoto from '../../assets/images/user_icon.png'
 import s from './Users.module.css';
-import Paginator, { PaginatorNew } from '../common/Paginator';
+import { PaginatorNew } from '../common/Paginator';
 
-const Users = ({totalUsersCount, pageSize, currentPage, onPageChanged, users, unfollowUser, followUser, followingProgress, unfollowing, following, ...props}) => {
-    
+const Users = ({ totalUsersCount, pageSize, currentPage, onPageChanged, users, unfollowUser, followUser, followingProgress, unfollowing, following, ...props }) => {
+
     return (
-        
+
         <div className={s.usersBlock}>
-            <PaginatorNew totalItemsCount = {totalUsersCount} pageSize={pageSize} currentPage={currentPage} onPageChanged={onPageChanged}/> 
+            <PaginatorNew totalItemsCount={totalUsersCount} pageSize={pageSize} currentPage={currentPage} onPageChanged={onPageChanged} />
             {users.map(user => <User key={user.id} id={user.id} followed={user.followed}
                 photo={user.photos.small ? user.photos.small : iconPhoto} fullName={user.name}
                 status={user.status} country={user.country} city={user.city} followUser={followUser}

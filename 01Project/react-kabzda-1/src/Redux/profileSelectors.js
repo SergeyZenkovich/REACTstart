@@ -10,5 +10,8 @@ const getUserId = (state) => {
 const getIsUserAuth = (state) => {
     return state.auth.isAuth;
 }
+const getIsEditMode = (state) => {
+    return state.profile.editMode;
+}
 
-export { getProfile, getStatus, getUserId, getIsUserAuth }
+export { getProfile, getStatus, getUserId, getIsUserAuth, getIsEditMode }

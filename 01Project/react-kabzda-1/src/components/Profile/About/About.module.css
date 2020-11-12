@@ -104,6 +104,12 @@
   .socials .website:hover{
     filter: invert(61%) sepia(3%) saturate(19%) hue-rotate(334deg) brightness(92%) contrast(95%);
   }
+  .socials .mainLink{
+    background-image: url('../../../assets/images/mainLink.svg');
+  }
+  .socials .mainLink:hover{
+    filter: invert(61%) sepia(3%) saturate(19%) hue-rotate(334deg) brightness(92%) contrast(95%);
+  }
 
   .socials img{
     width: 30px;
