@@ -10,7 +10,7 @@ import style from '../common/FormsControls/FormsControls.module.css'
 
 class LoginContainer extends React.Component {
     onSubmit = (formData) => {
-        this.props.logIn(formData.login, formData.password, formData.rememberMe);
+        this.props.logIn(formData.login, formData.password, formData.rememberMe, formData.captcha);
     }
     render() {
         return (<>
@@ -19,7 +19,7 @@ class LoginContainer extends React.Component {
                     <Redirect to='/profile' /> :
                     <div>
                         <h1>Loging page</h1>
-                        <LoginReduxForm onSubmit={this.onSubmit} />
+                        <LoginReduxForm onSubmit={this.onSubmit} captchaUrl={this.props.captchaUrl} />
                     </div>
             }
         </>
@@ -27,12 +27,15 @@ class LoginContainer extends React.Component {
     }
 
 }
-const LoginForm = ({ handleSubmit, error }) => {
+const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
     return (
         <form action="" onSubmit={handleSubmit} >
             {CreateField("text", "login", "login", [requiredField])}
             {CreateField("password", "password", "password", [requiredField])}
             {CreateField("checkbox", null, "rememberMe", [], 'input', "rememberMe")}
+
+            {captchaUrl && <img src={captchaUrl} alt="captcha Image" className={style.captchaImage} />}
+            {captchaUrl && CreateField("text", "captcha", "captcha", [requiredField])}
             <div>
                 {error && <div className={style.formSummaryError}>
                     {error}
@@ -51,7 +54,8 @@ const LoginReduxForm = reduxForm({
 
 const mapStateToProps = (state) => {
     return ({
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        captchaUrl: state.auth.captcha
     })
 }
 
